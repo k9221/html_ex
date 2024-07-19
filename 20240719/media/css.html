@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 2번 방식을 사용했을 때 */
+        p{color : blue;} 
+        /* .을 붙이게 되면 클래스명을 의미하게 된다.  */
+        .subject1{color: red;}
+        #subject2{color: green;}
+    </style>
+</head>
+ <!-- css를 적용하는 방법은 3가지이다. 
+     1.확장자가 .css인 파일을 참조하는 방법
+     2. style태그안에 정의하는 방법
+     3. 태그안에 inline 속성으로 정의하는 방법 
+        ㄴ 여기서 1번으로 하는 것을 권장한다. or 2번.-->
+
+<body>
+    <!-- 3번방식을 사용했을 때 -->
+    <!-- <p style="color: red;">css 시작!</p> -->
+    <p>시작!</p>
+    <p>오라클!</p>
+    <p class="subject1">자바!</p>
+    <p class="subject1">html!</p>
+    <!-- 중복된 이름을 정의할 수 있지만, id는 중복된 이름을 사용하면 안된다. -->
+    <div id="subject2">javacript</div>
+</body>
+</html>

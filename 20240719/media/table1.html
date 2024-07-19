@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .back_color{
+            background-color: antiquewhite;
+        }
+        
+        table{
+            /* caption-side: 40; */
+            /* border-style: solid;
+            border-color: aqua;
+            border-width: 10px; */
+            /* 위에 3가지랑 같은 의미이기에 보통 아래것을 사용한다. */
+            border : 1px solid black;
+            border-collapse: collapse;
+        }
+        td, th{
+            /* 아래에 두가지는 자주 쓰일 예정이니 꼭 복습하자 */
+            /* padding: 상하좌우 시계방향으로 칸의 크기를 정한다. */
+            /* padding: 5px 10px 15px 20px; */
+            padding: 10px 20px;
+            text-align: center; /* 숫자를 표의 가운데로 정렬시킴*/
+            border: 1px solid black;
+            
+        }
+    </style>
+</head>
+<body>
+    
+    <table border="1" >
+        <caption>시험 성적</caption>
+        <col class="back_color"></col>
+        
+        <tr class="back_color">
+            <th>이름</th>
+            <th>자바</th>
+            <th>오라클</th>
+            <th>html</th>
+        </tr>
+        <tr>
+            <td >홍길동</td>
+            <td>30</td>
+            <td>50</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td>김철수</td>
+            <td>80</td>
+            <td>80</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td>박영희</td>
+            <td>90</td>
+            <td>90</td>
+            <td>85</td>
+        </tr>
+       
+    </table>
+</body>
+</html>

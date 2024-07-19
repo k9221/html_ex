@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p><h1>회원가입을 환영합니다</h1></p>
+    <form action="audo.html" >
+    <fieldset>
+        <legend>사용자 정보</legend>
+        <ul>
+            <!-- <li>는 리스트의 약자로 리스트를 나타낼때 사용되는 테그이다.  -->
+            <li><div>
+                <label>아이디 : <input type="text" name="userid" placeholder="4자~10자 사이, 공백없이"></label>
+            </div></li>
+            <li><div>
+                <label>이메일 : <input type="text" name="email"></label>
+            </div></li>
+            <li><div>
+                <label>비밀번호 : <input type="password" name="pwd" placeholder="문자와 숫자, 특수 기호 포함"></label>
+            </div></li>
+            <li><div>
+                <label>비밀번호 확인 : <input type="password" name="pwd2"></label>
+            </div></li>
+            <li><div>
+                <label>비밀번호 확인 : <input type="password" name="pwd2"></label>
+            </div></li>
+             <li><div>
+                <label>가입 경로</label>
+                    <select>
+                        <option value="age=10">블로그</option>
+                        <option value="age=20">검색</option>
+                        <option value="age=30">SNS</option>
+                        <option value="age=40">기타</option>
+                    </select>
+            </div></li>
+            <li><div>
+                <label>메모 : </label>    
+                <textarea cols="40" rows="5" placeholder="남길 메모가 있다면 여기에"></textarea>
+            </div></li>
+       
+        </ul>
+    </fieldset>    
+    <Fieldset>
+        <LEgend>이벤트와 새로운</LEgend>
+            <label><input type="radio" name="subject" value="java" checked >메일 수신</label>
+            <label><input type="radio" name="subject" value="oracle">메일 수신 안함</label>  
+    </Fieldset>
+    <input type="submit" value="가입하기">
+    <input type="reset" value="취소"></form>
+    
+</body>
+</html>

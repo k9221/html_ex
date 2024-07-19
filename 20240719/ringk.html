@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{
+            color: inherit;
+            text-decoration: #eee;
+        }
+        a:link{
+            /* background-color: antiquewhite; */
+        }
+        /* 마우스를 갖다 대면 레드의 색깔로 바꿔줌 <많이 사용 됌!> */
+        a:hover{
+            color: red;
+            transform: translateY(-3px);
+            transition: 1s;
+            /* background-color: yellow; */
+        }
+        a.focus{
+            /* background-color: white; */
+        }
+        a.active{
+            /* background-color: aqua; */
+        }
+
+    </style>
+</head>
+<body>
+    <a href="http://www.daum.net">클릭</a>
+</body>
+</html>

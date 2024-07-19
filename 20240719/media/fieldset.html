@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="input.html" method="get">
+        <fieldset>
+            <legend>회원가입</legend>
+            <div>
+                <label>아이디 : <input type="text" id="userid"></label>
+            </div>
+            <div>
+                <label>패스워드 : <input type="password" id="pwd"></label>
+            </div>
+            <div>
+                <label>이름 : <input type="text" id="name"></label>
+            </div>
+            <div>
+                <label>취미 : </label>
+                <label><input type="checkbox" value="move"> 영화감상</label>
+                <label><input type="checkbox" value="ex"> 운동</label>
+                <label><input type="checkbox" value="cording"> 코딩</label>
+            </div>
+            <div>
+                <label>나이 : </label>
+                <select>
+                    <option value="age=10">10대</option>
+                    <option value="age=20">20대</option>
+                    <option value="age=30">30대</option>
+                    <option value="age=40">40대</option>
+                    <option value="age=50">50대</option>
+                    <option value="age=60">60대</option>
+                    <option value="age=70">70대</option>
+                </select>
+            </div>
+            <div>
+                <label>자기소개 : </label>    
+                <textarea cols="50" rows="10" placeholder="자기소개"></textarea>
+            </div>
+            <!-- 내가 입력한 값을 액션에 있는 페이지에 넘겨준다. -->
+             <!-- jsp에서만 사용 됌. -->
+            <input type="submit" value="가입하기">
+            <!-- <BUtton>버튼태그!</BUtton> -->
+            <!-- 해당 홈태그 안에 있는 것들만 초기화 시킨다!  -->
+            <!-- 홈태그는 jsp 안에서만 사용된다. -->
+             <input type="reset" value="초기화">
+        </fieldset>
+    </form>
+
+    
+</body>
+</html>
