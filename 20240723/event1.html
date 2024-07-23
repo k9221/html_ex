@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="../images/반짝별1.jpg" id="img1">
+</body>
+</html>
+<script>
+    var obj= document.querySelector("#img1");
+    obj.onclick = function(e){
+        // obj.src="../images/함정카드.webp";
+        // console.log("이벤트 유형 ===>", e.type);
+        // console.log("x 위치",e.pageX);
+        // console.log("y 위치",e.pageY);
+        // console.log(e);
+        // alert("하이!"); 안내창을 나타냄
+    }
+    obj.addEventListener("mouseover", () => {
+        obj.src = "../images/함정카드.webp"
+    }); 
+    obj.addEventListener("mouseout", () => {
+        obj.src = "../images/반짝별1.jpg"
+    });
+
+    // obj.addEventListener("mouseover", () => {alert("test")}); 
+    // 아래식과 같은 내용이며, 화살표식이라고 부름 둘다 알아둬야할 필요가 있음.
+    // obj.addEventListener("mouseover", function(){alert("test");});
+
+
+</script>

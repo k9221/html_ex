@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="pageMove()">페이지이동</button>
+    <button onclick="pageClose()">페이지닫기</button>
+    <button onclick="popup()">팝업</button>
+
+
+</body>
+</html>
+<script>
+    function pageMove(){
+        location.href = "test1-1.html";
+    }
+    function pageClose(){
+        window.close();
+    }
+    function popup(){
+        var left = (screen.availWidth- 500) / 2;
+        var top = (screen.availHeight-300) / 2;
+        window.open("test1-1.html","pop",'width=500, height=300, left=${left}, top=${top}'); //여기서 pop 부분은 제목을 설정하는 것으로 여러개의 팝업이
+                                                                    //열리는 것을 방지해준다.
+    }
+
+</script>
+
+

@@ -14,25 +14,71 @@
     }
     th, td {
       border:1px solid #ccc; 
-      padding:5px;  
+      padding:1px;  
       font-size:0.8em; 
     }
     #boder{
         width: 192px;
         height: 844px;
         background-color: #ccc;
-        float: left;
         padding: 32px;
+        
     }
     img{
-        width: 180px;
-        height: 327px;
+        display: block;
+        width: 200px;
+        height: 200px;
+        border-radius: 100%;
+        font-size: 0;
+        background-size: cover;
+        margin: 0 auto;
     }
     #container{
-            width: 650px;
-            margin: 0 auto;
-            padding: 5px;
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
     }
+    #main{
+        width: calc(100% - 260px);
+        padding: 2.5em;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    aside{
+        width: 260px;
+        padding: 20px;
+        background-color: antiquewhite;
+        position: sticky;
+        top: 0;
+        align-self: flex-start;
+        height: 100vh;
+    }
+    #detail{
+        margin-top: 5em;
+    }
+    p{
+        font-size: 0.85em;
+        font-weight: bold;
+        line-height: 2;
+    }
+    #sns{
+        margin-top: 5em;
+    }
+    #sec1{
+        padding: 1.25em 2.5em;
+        width: calc(50% - 2em);
+        margin: 1em;
+        border-radius: 0.5em;
+        transition: all .2s;
+        border: 1px solid #f2f2f2;
+    }
+    #list1{
+        display: flex;
+        justify-content: space-around;
+        list-style: none;
+        margin-top: 1.5em;  
+    }
+    
   </style>
 </head>
 
@@ -42,7 +88,7 @@
             <div id = "boder">
             <div id="namecard">
                 <img src="images2/back.jpg">
-                <h1>Hong Gildong</h1>    
+                <h1 style="margin-top: 1em;">Hong Gildong</h1>    
                 <p>프로그래밍 재밌다</p>
             </div>
             <div id="detail">
@@ -54,16 +100,17 @@
                 <h3><a href="#">클릭!</a></h3>
             </div>      </div>     
         </aside>
+
         <div id="main">
-            <section>
+            <section class = "sec1">
                 <h2 class="subtitle">자기소개</h2>
                 <p><mark>프로그래밍</mark>에 관심이 많습니다. <br>현재 열심히 공부하며 코딩 중!</p>
             </section>
 
             <!-- 경력 -->
-            <section>
+            <section class = "sec1">
                 <h2 class="subtitle">Experience</h2>
-                <ul>
+                <ul class = "list1">
                     <li>프론트엔드
                         <ul>
                             <li>HTML/CSS/JAVASCRIPT </li>
@@ -81,10 +128,10 @@
             </section>
 
             <!-- 숙련도 -->
-            <section>
+            <section class = "sec1">
                 <h2 class="subtitle">보유 기술</h2>
                 <li style="list-style: none;"> 
-                    <ul>
+                    <ul class = "list1">
                         <li>자바 </li>
                         <li>오라클</li>
                     </ul>                        
@@ -92,8 +139,8 @@
             </section>
 
             <!-- 학력 -->
-            <section>
-                <h2 class="subtitle">Education</h2>
+            <section class = "sec1">
+                <h2 class="sec">Education</h2>
                 <table>
                   <caption>학력 사항</caption>
                   <thead>
