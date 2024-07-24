@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text1" id="num1">행
+    <input type="text2"id="num2">열
+    <button onclick="fnDrawTable()">작성</button>
+    <div id="main"></div>
+    
+</body>
+</html>
+<script>
+    function fnDrawTable(){
+        var table = document.createElement("table");   
+       
+        // tr 반복 횟수(row)
+        var num1 = document.querySelector("#num1").value;
+        // td 반복 횟수(column)
+        var num2 = document.querySelector("#num2").value;
+
+        for(var i=0; i<num1; i++){
+            var row = document.createElement("tr");
+            
+             for(var j=0; j<num2; j++){
+                var col = document.createElement("td");
+                col.innerHTML = `${i},${j}`
+                row.appendChild(col);
+            }
+            table.appendChild(row);
+        }
+        var main = document.querySelector("#main")
+        main.appendChild(table);
+
+    }
+
+</script>

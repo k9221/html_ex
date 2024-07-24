@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 150px;
+            height: 150px;
+            border: 1px solid #eee;
+            display: inline-block;
+            background-color: gainsboro;
+            margin: 20px;
+            transition: 1.3s;
+        }
+        #box1:hover{  /*hover : 마우스를 올렸을 때*/
+            transform: rotate(70deg);
+        }
+        #box2:hover{
+            transform: rotate(-30deg);
+        }
+        #box3:hover{
+            transform: rotateX(30deg);
+        
+        }
+        #box4:hover{
+            transform: rotateY(30deg);
+        }
+        #box5:hover{
+            transform: rotate3d(2,1,-1,50deg);
+        }
+        #box6:hover{
+            transform: skewY(20deg);
+        }
+        #box7:hover{
+            transform: scale(2);
+        }
+        #box8:hover{
+            transform: skewY(20deg);
+        }
+        .per{
+            perspective: 300px;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="box" id="box1"></div>
+    <div class="box" id="box2"></div>
+    <div style="perspective: 400px;" class="box">
+        <div class="box per" id="box3"></div>
+    </div>
+    <div class="box" id="box4"></div>
+    <div class="box" id="box5"></div>
+    <div class="box" id="box6"></div>
+    <div class="box" id="box7"></div>
+    <div class="box" id="box8"></div>
+
+</body>
+</html>

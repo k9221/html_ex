@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 150px;
+            height: 150px;
+            border: 1px solid white;
+            display: inline-block;
+            background-color: white;
+            margin: 20px;
+            /* animation-name: ani2;
+            animation-duration: 1s; /* 몇초간 작동시킬 것에 대한 옵션*/
+            /* animation-iteration-count: 3; /*애니메이션 하는 횟수를 설정가능하게 하는 옵션 infinite는 무한정으로 작동시키게 함*/
+            /* animation-timing-function: ease; */ 
+            /* animation: ani2 3s infinite linear; /*이렇게 한번에 설정 할 수 있음*/
+        /* }
+
+        @keyframes ani1{ /*@keyframes : 좀 더 세분화하여서 애니메이션 효과를 줄 수 있음*/
+            from{
+
+            }
+            to{
+
+            }
+
+        }
+        /* @keyframes ani2{
+            0%{
+                transform: rotate(0deg);
+                background-color: black;
+            }
+            50%{
+                transform: rotate(180deg);
+                background-color: gold;
+            }
+            100%{
+                transform: rotate(360px);
+                background-color: yellow;
+            }
+        } */
+        .box2{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #eee;
+            display: inline-block;
+            background-color: gainsboro;
+            margin: 20px;
+            animation: ani3 3s infinite linear;
+            background-image: url(../images/반짝별1.jpg);
+            background-size: 200px;
+            border-radius: 50%;  
+        }
+        .shadow{
+            box-shadow : 4px 6px 10px 0px rgb(85, 84, 84); /* 그림자의 색깔을 정의할 수 있음*/
+        }
+        @keyframes ani3{
+            0%{
+                transform: perspective(150px) rotateX(0deg) rotateY(0deg);
+                
+            }
+            50%{
+                transform:  perspective(350px) rotateX(0deg) rotateY(-180deg);
+                
+            }
+            100%{
+                transform:  perspective(550px) rotateX(0deg) rotateY(-180deg);
+                
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box2 shadow"></div>
+    
+</body>
+</html>

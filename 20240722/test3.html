@@ -79,6 +79,7 @@
         margin-top: 1.5em;  
     }
     
+    
   </style>
 </head>
 
@@ -98,6 +99,7 @@
             <div id="sns">
                 <h2>SNS</h2>
                 <h3><a href="#">클릭!</a></h3>
+                <div id = "time"></div>
             </div>      </div>     
         </aside>
 
@@ -171,3 +173,13 @@
     </div>
 </body>
 </html>
+<script>
+   setInterval(() => {
+    var time = new Date();
+    var obj = document.querySelector("#time").innerHTML;
+    var datetime = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();         
+    console.iog(datetime);
+    obj.innerHTML  = datetime;    
+        }, 1000); // 1초마다 업데이트
+</script>
+

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사용자 정보 입력 폼</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        fieldset {
+            border: none;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        legend {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            margin-top: 5px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="tel"]:focus {
+            border-color: #4CAF50;
+        }
+        button {
+            padding: 12px 24px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <fieldset>
+            <legend>사용자 정보</legend>
+            <form id="userForm">
+                <ul>
+                    <li>
+                        <label for="userid">아이디 :</label>
+                        <input type="text" id="userid" name="userid" placeholder="4자~10자 사이, 공백없이" required>
+                    </li>
+                    <li>
+                        <label for="pwd">비밀번호 :</label>
+                        <input type="password" id="pwd" name="pwd" placeholder="문자와 숫자, 특수 기호 포함" required>
+                    </li>
+                    <li>
+                        <label for="pwd2">비밀번호 확인 :</label>
+                        <input type="password" id="pwd2" name="pwd2" placeholder="5글자 이상 입력하시오." required>
+                    </li>
+                </ul>
+            </form>
+        </fieldset>
+        <fieldset>
+            <legend>개인 정보</legend>
+            <form id="personalForm">
+                <ul>
+                    <li>
+                        <label for="name">이름 :</label>
+                        <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+                    </li>
+                    <li>
+                        <label for="email">메일주소 :</label>
+                        <input type="email" id="email" name="email" placeholder="example@example.com" required>
+                    </li>
+                    <li>
+                        <label for="phone">연락처 :</label>
+                        <input type="tel" id="phone" name="phone" placeholder="010-1234-5678" required>
+                    </li>
+                </ul>
+            </form>
+        </fieldset>
+
+        <button onclick="validateAndSubmit()">확인</button>
+    </div>
+
+    <script>
+        function validateAndSubmit() {
+            var userid = document.getElementById('userid').value;
+            var name = document.getElementById('name').value;
+            var pwd = document.getElementById('pwd').value;
+            var pwd2 = document.getElementById('pwd2').value;
+
+            if (userid === "" || name === "" || pwd === "") {
+                alert("아이디(이름, 비밀번호)를 입력해주세요.");
+                return;
+            }
+
+            if (pwd.length < 6) {
+                alert("비밀번호는 6글자 이상 입력해주세요.");
+                return;
+            }
+
+            if (pwd !== pwd2) {
+                alert("비밀번호의 값이 서로 다릅니다.");
+                return;
+            }
+
+            alert("가입되었습니다.");
+        }
+    </script>
+</body>
+</html>

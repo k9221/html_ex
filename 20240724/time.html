@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="time"></div>
+</body>
+</html>
+<script>
+    // var는 다 담을 수 있는 타입
+    var time = new Date(); // Date time = new Date(); --자바식 
+    // var obj = document.querySelector("#time");
+    // obj.innerHTML = time.toLocaleString(); // 지역(나라)의 따라서 바꿔줌.
+    // console.log(time.getFullYear());    //년도를 나타냄
+    // console.log(time.getMonth() +1); // 월같은 경우는 0~11의 값이기에 7월을 출력하고 싶을 경우 +1을 한다.
+    // console.log(time.getDate()); // 일을 나타냄
+    // console.log(time.getDay()); // 
+    setInterval(() => {
+            var time = new Date(); // 현재 시간을 가져오는 Date 객체 생성
+            var hours = time.getHours().toString().padStart(2, '0'); // 시간을 가져와서 두 자리로 만들기
+            var minutes = time.getMinutes().toString().padStart(2, '0'); // 분을 가져와서 두 자리로 만들기
+            var currentTime = hours + ':' + minutes; // 시간과 분을 HH:MM 형식으로 합치기
+            var obj = document.querySelector("#time");
+            obj.textContent = currentTime; // div 요소에 현재 시간 표시
+        }, 1000); // 1초마다 업데이트
+    
+    setTimeout(fnAlert, 5000);
+
+    function fnAlert(){
+        alert("5초 지났다.");
+    }
+
+
+</script>
