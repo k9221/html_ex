@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mq 테스트</title>
+  <style>
+    * {
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+    }
+    body {
+        background:rgb(9, 100, 160);
+    }
+
+    img{
+        width: 300px;
+        height: 250px;
+    }
+    #container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(300px, 1fr));
+        gap: 20px;
+        justify-items: center;
+        padding: 20px;
+    }    
+    .card {
+        position:relative;
+        float:left;  /* 카드를 가로로 배치 */
+        width:550px;
+        height:250px;
+        margin:10px;
+        border:1px solid #0f0f0f33;
+        background-color:#ffffff;
+        display: flex;
+        align-items: center;   
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
+    }
+    .words {
+        position:absolute;    
+        left:310px;
+        top:70px;
+        text-align:center;
+        width:200px;          
+    }
+    @media screen and (max-width:768px) {
+        #container{
+                grid-template-columns: column;
+                align-items: center;
+            }
+        }
+    @media screen and (max-width:425px) {
+            body{
+            
+            
+            }
+        }    
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="card">
+      <img src="images/back5.jpg">    
+      <div class="words">
+        <h2>호호호ㅗ호홓롤로롤</h2>
+        <h3>- 블랙홀</h3>
+      </div>            
+    </div>
+    <div class="card">
+      <img src="images/dk.jpg">    
+      <div class="words">
+        <h2>도르마무</h2>
+        <h3>- 닥터스트레인지</h3>
+      </div>            
+    </div>            
+  </div>
+</body>
+</html>

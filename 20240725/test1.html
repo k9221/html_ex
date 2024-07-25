@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn {
+            background-color : rgb(39, 185, 39);
+            color : white;
+            padding : 15px;
+            font-size: 15px;
+            border : none;
+            cursor : pointer;
+
+        }
+        .menu {
+            background-color: #f9f9f9;
+            width: 150px;
+            box-shadow: 1px 3px 8px 3px #e7e3e3;
+            display: none; /*아무 이벤트도 주지 않았을 때 화면에 보이지 않는 상태 만들기*/
+            position: absolute; /*절대적 위치를 설정해준다.*/
+        }
+        .menu a {
+            display: block;
+            padding : 10px;
+            text-decoration: none; /*밑줄을 제거해준다. */
+            color: black
+        }
+        .btn:hover + .menu, /*호버 이벤트 사용 시에 메뉴와 메뉴에도 호버 기능을 넣기 위해서 묶는다.*/
+        .menu:hover{
+            display: block;
+        }
+        .menu a:hover{
+            background-color: cadetblue;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="top-menu">
+        <button class="btn">Dropdown</button>
+        <div class="menu">
+            <a class = "ho1">Menu 1</a>
+            <a class = "ho2">Menu 2</a>
+            <a class = "ho3">Menu 3</a>
+            <a class = "ho4">Menu 4</a>
+            <a class = "ho5">Menu 5</a>
+
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+</script>
