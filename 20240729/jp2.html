@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="crossorigin="anonymous"></script>
+    <!-- 만약 실행이 안될 경우 위의 식이 있는지 확인을 해준다.! -->
+</head>
+<body>
+    <img src="images/dk.jpg" width="300px" height="500px">
+    <div>
+        <button id ="btn">클릭!</button>
+    </div>
+</body>
+</html>
+<script>
+    $("#btn").on("click", ()=>{
+        $("img").attr("src", "images/back4.jpg"); //attr 함수는 속성에 접근될 때 사용된다.
+    });
+</script>

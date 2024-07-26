@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src = "js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+        <ul>
+            <li>자바</li>
+            <li>오라클</li>
+            <li><span>html/css</span></li>
+            <li>javascript</li>
+            <li>jquery</li>
+        </ul>
+        <div>
+            <button id = "btn">버튼</button>
+        </div>
+</body>
+</html>
+<script>
+    $("#btn").on("click", ()=>{
+        // $("li:has(span)").css("color", "red");//has라는 옵션을 통해서 원하는 것을 선택가능하다.
+        // $("li:eq(2)").css("color", "red"); //인덱스가 2인 값을 선택
+        //$("li:gt(2)").css("color", "red"); //밑에서 2번째 까지만
+        // $("li:lt(2)").css("color", "red");// 위에서 2번쨰 까지만
+        // $("li:even").css("color", "red"); // 홀수만
+        // $("li:first").css("color", "red"); //첫번째 것만
+        // $("li:last").css("color", "red");
+        var items = $("li");
+    }) 
+</script>

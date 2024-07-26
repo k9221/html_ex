@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <meta charset="EUC-KR">
+    <title>Insert title here</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th,
+        tr,
+        td {
+            border: 1px solid black;
+            padding: 2px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <div>{{list}}</div> <div v-if="true">{{name}}</div> 처럼 if문처럼 사용가능 -->
+
+        <table v-if="!isInfo">
+            <tr>
+                <th>아이디</th>
+                <th>이름</th>
+                <th>이메일</th>
+                <th>웹사이트</th>
+            </tr>
+            <tr v-for="(item, index) in list">
+                <td>{{item.id}}</td>
+                <td>
+                    <span v-if="index+1 <=5" style="color: blue;">{{item.name}}</span>
+                    <span v-else>{{item.name}}</span>
+                </td>
+                <td>{{item.email}}</td>
+                <td>{{item.website}}</td>
+                <td><button @click="fnInfo(item)">상세보기</button></td>
+            </tr>
+
+        </table>
+        <!-- <div id ="info">{{info.name}} {{info.email}} </div>  -->
+        <div v-if="isInfo">
+            <div>이름 : {{info.name}}</div>
+            <div>메일 : {{info.email}}</div>
+            <div><button @click="isInfo = false">되돌아가기</button></div>
+        </div>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() { // 변수를 선언하는 영역
+                return {
+                    name: "홍길동",
+                    list: [],
+                    info: {},
+                    isInfo : false
+                };
+            },
+            methods: {  // 함수(메서드)를 선언하는 영역
+                fnGetList() {
+                    $.ajax({
+                        url: "https://jsonplaceholder.typicode.com/users",
+                        dataType: "json",
+                        type: "GET",
+                        data: {},
+                        success: (data) => {
+                            console.log(data);
+                            this.list = data;
+
+                        }
+                    });
+                },
+                fnInfo(item) {
+                    var self = this;
+                    self.info = item;
+                    self.isInfo = true;
+                }
+                
+            },
+
+            mounted() { // 내가 탑재하고 싶은것을 선언하는 영역
+                this.fnGetList();
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+
+
+</html>
