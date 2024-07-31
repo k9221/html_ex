@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <style>
+        .group{
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>회원가입</h1>
+        <div class="group">
+            <label>아이디
+                <input type="text" v-model="user.userId">
+                <button @click="checkUserId">아이디 중복 확인</button>
+            </label>
+        </div>
+        <div class="group">
+            <label>비밀번호
+                <input type="password" v-model="user.pwd">
+            </label>
+        </div>
+        <div class="group">
+            <label>비밀번호 확인
+                <input type="password" v-model="user.pwdConfirm">
+            </label>
+        </div>
+        <div class="group">
+            <label>이름
+                <input type="text" v-model="user.userName">
+            </label>
+        </div>
+        <div class="group">
+            <label>메일
+                <input type="text" v-model="user.email">
+            </label>
+        </div>
+        <div class="group">
+            <label>전화번호
+                <input type="text" v-model="user.phone">
+            </label>
+        </div>
+        <div class="group">
+            <label>
+                <label>남자
+                    <input type="radio" value="남자" v-model="user.gender">
+                </label>
+                <label>여자
+                    <input type="radio" value="여자" v-model="user.gender">
+                </label>
+            </label>
+        </div>
+        <button @click="register">회원가입</button>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    user: {
+                        userId: "",
+                        pwd: "",
+                        pwdConfirm: "",
+                        userName: "",
+                        email: "",
+                        phone: "",
+                        gender: "",
+                        
+                    },
+                    isCheck: false
+                };
+            },
+            methods: {
+                checkUserId() {
+                  console.log(this.user);
+                    $.ajax({
+                        url: `http://localhost:3000/checkUserId?userId='${this.user.userId}'`,
+                        type: "GET",
+                        success: (data) => {
+                            if (data.exists) {
+                                alert("이미 사용중인 아이디");
+                            } else {
+                                alert("사용가능한 아이디");
+                                this.user.isCheck = true;
+                            }
+                        },
+                    });
+                },
+                register() {
+                    if (!this.user.userId || !this.user.pwd || !this.user.pwdConfirm || !this.user.userName || !this.user.email || !this.user.phone || !this.user.gender) {
+                        alert("빈칸이 있습니다.");
+                        return;
+                    }
+                    if (this.user.pwd !== this.user.pwdConfirm) {
+                        alert("비밀번호가 다릅니다 다시 입력하시오.");
+                        return;
+                    }
+                    if (this.user.userId.length < 1) {
+                        alert("아이디는 5글자 이상이어야 합니다.");
+                        return;
+                    }
+                    if (this.user.pwd.length < 1) {
+                        alert("비밀번호는 6글자 이상이어야 합니다.");
+                        return;
+                    }
+
+                    $.ajax({
+                        url: `http://localhost:3000/register`,
+                        type: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify(this.user),
+                        success: (data) => {
+                            console.log(data);
+                            alert("회원가입 성공!");
+                        },
+                    });
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

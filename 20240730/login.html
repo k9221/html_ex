@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <meta charset="EUC-KR">
+    <title>Insert title here</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <label>아이디 : <input type="text" placeholder="아이디" v-model="user.id"></label>
+        </div>
+        <div>
+            <label>비밀번호 : <input type="password" placeholder="비밀번호 " v-model="user.pwd"></label>
+        </div>
+        <div>
+            <button @click="fnLogin">로그인</button>
+        </div>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+
+                    user: {
+                        id: "",
+                        pwd: ""
+                    }
+
+                };
+            },
+            methods: {
+                fnLogin() {
+                    var self = this;
+                    $.ajax({
+                        url: "http://localhost:3000/login",
+                        dataType: "json",
+                        type: "POST",
+                        data: JSON.stringify(self.user),
+                        contentType: "application/json",
+                        success: function (data) {
+                            if(data[0].CNT > 0){
+                                location.href="test1.html";
+                            } else {
+                                alert("아이디/패스워드를 다시 확인해주세요.")
+                            }
+                        }
+                    });
+                }
+            },
+            mounted() {
+
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

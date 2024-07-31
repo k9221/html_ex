@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div id="app">
+        <input placeholder="학번">
+        <input placeholder="이름">
+        <input placeholder="학과">
+        <button @click="fnupdate1">추가</button>
+
+        <button @click="update">실행!</button>
+    </div>
+</body>
+
+</html>
+<script>
+    const app = Vue.createApp({
+        data() {
+            re
+
+        },
+        methods: {
+            review() { // 20153075
+                var self = this;
+                var url = `http://localhost:3000/update?stuNo='${stuNo}stuName='${stuName}stuDept='${stuDept}'''`
+                $.ajax({
+                    url: url,
+                    dateType: "json",
+                    type: "GET",
+                    data: {},
+                    success: function (data) {
+                        console.log(data)
+                    }
+
+                });
+            },
+            fnupdate1() {
+                var self = this;
+                var url = `http://localhost:3000/fnupdate1?stuNo='${stuNo}'stuName='${stuName}stuDept='${stuDept}''' `
+                $.ajax({
+                    url: url,
+                    dateType: "json",
+                    type: "GET",
+                    data: {},
+                    success: function (data) {
+                        console,log(data)
+                    }
+                });
+            },
+        },
+        mounted() {
+            
+        }
+    });
+    app.mount('#app');
+</script>

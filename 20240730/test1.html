@@ -1,172 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <meta charset="EUC-KR">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Insert title here</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f2f2f2;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            width: 100%;
-            max-width: 500px;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        fieldset {
-            border: none;
-            margin-bottom: 20px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        legend {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
+        .form-group{
             margin-bottom: 20px;
         }
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
-            width: calc(100% - 22px);
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1em;
-            margin-top: 5px;
-            transition: border-color 0.3s;
-        }
-        input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="tel"]:focus {
-            border-color: #4CAF50;
-        }
-        button {
-            padding: 12px 24px;
-            background-color: #4CAF50;
-            width: 500px;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            margin-top: 20px;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        #male{
-         font-size: bold;   
-        }
-        select{
-            width: calc(100% - 0px);
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1em;
-            margin-top: 5px;
-            transition: border-color 0.3s;
-        } 
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <fieldset>
-            <legend>학생 추가</legend>
-            <form id="userForm">
-                <ul>
-                    <li>
-                        <label for="No" v-model="stuNo">학번 :</label>
-                        <input type="text" id="stuNo" name="stuNo" placeholder="" required>
-                    </li>
-                    <li>
-                        <label for="Name" v-model="stuName">이름 :</label>
-                        <input type="text" id="stuName" name="stuName" placeholder="" required>
-                    </li>
-                    <li>
-                        <label for="Dept" v-model="stuDept">학과 :</label>
-                        <input type="text" id="stuDept" name="stuDept" placeholder="" required>
-                    </li>
-                    <li>
-                        <label for="Grade" v-model="stuGrade">학년 :</label>
-                        <select id="stuGrade">
-                            <option value="" disabled selected>학년을 선택하세요</option>
-                            <option value="1">1학년</option>
-                            <option value="2">2학년</option>
-                            <option value="3">3학년</option>
-                            <option value="4">4학년</option>
-                        </select>
-                        
-                    </li>
-                    <input type="radio" id="male" name="gender" value="M" v-model="stuGender">남자</input>
-                    <input type="radio" id="male" name="gender" value="F" v-model="stuGender">여자</input>
-                </ul>
-            </form>
-        </fieldset>
-        
-        <button onclick="validateAndSubmit()">제출</button>
-        
-        
-        
-    </div>
-    <script>
-        const app = Vue.createApp({
-            data() {
-                return {
-                    stuNo :"",
-                    stuName :"",
-                    stuDept :"",
-                    stuGrade :"",
-                    truGender :"" 
-                };
-            },
-            methods: {
-                fnGetList() {
-                    var self = this;
-                    var url = `http://localhost:3000/update?stuNo=%${stuNo}%stuNamestuName=%${stuName}%stuDept=%${stuDept}%stuGrade=%${stuGrade}%stuGender=%${stuGender}%`
-                    $.ajax({
-                       url : url,
-                       dateType:"json",
-                        type: "GET",
-                        data: {},
-                        success: function (data) {
-                            console.log(data);
-                        }
-                       
-                    });
-                },
-                
-            },
-            mounted() {
-                
-               
-            }
-        });
-        app.mount('#app');
-    </script>
+    <div id="app" v-model="fnJoin">
+        <h1>회원가입</h1>
+        <div class="form-group">
+            <label>아이디
+                <input v-if="!isCheck" type="text" v-model="userId">
+                <input v-else type="text" v-model="userId" disabled>
+            </label>
+        </div>
+        <div class="form-group">
+            <label>비밀번호
+                <input type="password" v-model="Pwd">
+            </label>
+            <button @click="fnPwdCheck">비밀번호 확인</button>
+        </div>
+        <div class="form-group">
+            <label>이름
+                <input type="text" v-model="userName">
+                <div class="form-group">
+                    <label>메일
+                        <input type="text" v-model="Mail">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>전화번호
+                        <input type="text" v-model="phone">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <label>남자
+                            <input type="radio" v-model="gender">
+                        </label>
+                        <label>여자
+                            <input type="radio" v-model="gender">
+                        </label>
+                    </label>
+
+                </div>
+                <button @click="fnSave">회원가입</button>
+
+
 </body>
+
 </html>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                user: {
+                    userId: "",
+                    wd: "",
+                    userName: "",
+                    mail: "",
+                    phone: "",
+                    gender: "",
+                    isCheck: false
+                }
+
+            };
+        },
+        methods: {
+            fnJoin() {
+                var self = this;
+                if (this.userId) {
+                    alert("아이디를 다시 확인해주세요")
+                } else if (self.userid.length <= 5) {
+                    alert("5글자 이상 입력하시오");
+                } else if (self.userPwd.length <= 6) {
+                    alert("6글자 이상 입력하시오");
+                } else {
+                  
+                }
+
+                var url = `http://localhost:3000/insert?`
+                $.ajax({
+                    url: url,
+                    dataType: "json",
+                    type: "GET",
+                    data: {},
+                    success: function (data) {
+                        console.log(data);
+                        console.log(data[0], CNT);
+                        if (data[0].CNT > 0) {
+                            alert("이미 사용중인 아이디");
+                        } else {
+                            alert("사용가능한 아이디");
+                            self.isCheck = true;
+                        }
+
+                    }
+                });
+            }
+        },
+        mounted() {
+
+        }
+    });
+    app.mount('#app');
+</script>
