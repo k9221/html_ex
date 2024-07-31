@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <meta charset="EUC-KR">
+    <title>Insert title here</title>
+    <style>
+        input {
+            width : 80px;
+            margin-right : 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <input placeholder="학번" v-model="stuNo">
+    <input placeholder="학년" v-model="stuGrade">
+    <div><button @click="fnSave">저장</button></div>
+    <div><button @click="fndelete">삭제</button></div>
+</div>
+
+
+</body>
+</html>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                
+            };
+        },
+        methods: {
+            fnSave(){
+                var url = `http://localhost:3000/qwer?stuNo=%${this.stuNo}%stuGrade=%${this.stuGrade}`
+                $.ajax({
+                   
+                    dataType : "json",
+                    type : "GET",
+                    data : {},
+                    success : function(data){
+                        console.log(data);
+                    }
+                }); 
+            },
+            fnDelete(){
+                var url = `http://localhost:3000/stuDelete?stuNo=%${this.stuNo}`
+                $.ajax({
+                    dataType : "json",
+                    type : "GET",
+                    data : {},
+                    success : function(data){
+                        console.log(data);
+                    }
+                }); 
+            }
+        },
+        mounted() {
+           
+        }
+    });
+    app.mount('#app');
+</script>
