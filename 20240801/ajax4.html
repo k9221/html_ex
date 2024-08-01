@@ -2,46 +2,58 @@
 <html>
 
 <head>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <meta charset="EUC-KR">
     <title>Insert title here</title>
     <style>
-        #app{
+        #app {
             width: 600px;
-            margin : 20px auto;
+            margin: 20px auto;
         }
-        table{
+
+        table {
             width: 600px;
         }
-        table, tr,td, th {
+
+        table,
+        tr,
+        td,
+        th {
             border: 1px solid;
             text-align: center;
             border-collapse: collapse;
         }
 
-        tr, td, th {
+        tr,
+        td,
+        th {
             padding: 5px 10px;
         }
+
         td input {
             width: 70px;
         }
+
         .txt {
             font-weight: bold;
         }
+
         .txt2 {
-            color : blue;
+            color: blue;
             font-weight: bold;
         }
+
         select {
-            margin : 0 10px;
+            margin: 0 10px;
             padding: 2px;
-        } 
-        .btn {
-            margin-top : 5px;
-            float: right;
         }
-        input[type="radio"] {width: 20px;}
+
+        .btn {
+            margin-top: 5px;
+            float: left;
+        }
     </style>
 </head>
 
@@ -56,9 +68,17 @@
         </select>
         <button @click="fnGetList">검색</button>
         <div style="margin-top : 20px;"></div>
+        <label><input type="radio" name="radio-group">오름차순</label>
+        <label><input type="radio" name="radio-group">내림차순</label>
+        <select class="btn" v-model="keyword">
+            <option value="name" v-model="orderName">이름</option>
+            <option value="num" v-model="orderKind">학번</option>
+            <option value="grade" v-model="grade">학년</option>
+        </select>
+
         <table>
             <tr>
-                <th>선택</th>
+                <th><input type="checkbox" @click="fnAllCheck"></th>
                 <th>학번</th>
                 <th>이름</th>
                 <th>학과</th>
@@ -68,8 +88,9 @@
             </tr>
             <tr v-for="(item, index) in list">
                 <template v-if="item.STU_NO == updateStuNo">
-                    <td><input type="checkbox" :id="'stuNo_' + index" :value="item.STU_NO" v-model="selectItem" name="stuKey"></td>
-                    <td><label :for="'stuNo_' + index">{{item.STU_NO}}</label></td>
+                    <td><input type="checkbox" :id="'stuNo-' + index" :value="item.STU_NO" v-model="selectList"
+                            name="stuKey"></td>
+                    <td><label :for="'stuNo-' + index">{{item.STU_NO}}</label></td>
                     <td><input v-model="item.STU_NAME"></td>
                     <td><input v-model="item.STU_DEPT"></td>
                     <td><input v-model="item.STU_GRADE"></td>
@@ -77,8 +98,9 @@
                     <td><button @click="fnSave(item)">저장</button></td>
                 </template>
                 <template v-else>
-                    <td><input type="checkbox" :id="'stuNo_' + index" :value="item.STU_NO" v-model="selectItem" name="stuKey"></td>
-                    <td><label :for="'stuNo_' + index">{{item.STU_NO}}</label></td>
+                    <td><input type="checkbox" :id="'stuNo-' + index" :value="item.STU_NO" v-model="selectList"
+                            name="stuKey"></td>
+                    <td><label :for="'stuNo-' + index">{{item.STU_NO}}</label></td>
                     <td>{{item.STU_NAME}}</td>
                     <td>{{item.STU_DEPT}}</td>
                     <td>{{item.STU_GRADE}}</td>
@@ -87,7 +109,7 @@
                         <span v-else>여자</span>
                     </td>
                     <td><button @click="fnUpdate(item.STU_NO)">수정</button></td>
-                </template>    
+                </template>
 
             </tr>
         </table>
@@ -98,11 +120,17 @@
         const app = Vue.createApp({
             data() {
                 return {
-                    list : [],
-                    keyword : "",
-                    updateStuNo : "",
-                    stuGrade : "",
-                    selectItem : []
+                    list: [],
+                    keyword: "",
+                    updateStuNo: "",
+                    stuGrade: "",
+                    selectItem: "",
+                    defaultList: [],
+                    isAllCheck: false,
+                    orderName: "STU_NAME",
+                    orderKind: "ASC",
+                    
+
 
                 };
             },
@@ -117,23 +145,25 @@
                         data: {},
                         success: function (data) {
                             self.list = data;
-                            console.log(data);
+                            for (var i = 0; i < self.list.length; i++) {
+                                self.defaultList.push(self.list[i].STU_NO);
+                            }
                         }
                     });
                 },
 
-                fnUpdate(stuNo){
+                fnUpdate(stuNo) {
                     this.updateStuNo = stuNo;
                 },
 
-                fnRemove(){
+                fnRemove() {
                     var self = this;
 
-                    if(!confirm("정말 삭제할거냐?")){
+                    if (!confirm("정말 삭제할거냐?")) {
                         return;
-                    };           
+                    };
                     var self = this;
-                    var url = `http://localhost:3000/delete?stuNo=${self.selectItem}`
+                    var url = `http://localhost:3000/delete?stuNo=${self.selectList}`
                     $.ajax({
                         url: url,
                         dataType: "json",
@@ -141,16 +171,16 @@
                         data: {},
                         success: function (data) {
                             alert(data[0].message);
-                        
-                            self.fnGetList();                     
+
+                            self.fnGetList();
                         }
                     });
                 },
 
-                fnSave(item){
-                    if(!confirm("저장 할거냐?")){
+                fnSave(item) {
+                    if (!confirm("저장 할거냐?")) {
                         return;
-                    }; 
+                    };
                     var self = this;
                     var url = `http://localhost:3000/update?stuNo=${item.STU_NO}&stuName=${item.STU_NAME}&stuGrade=${item.STU_GRADE}&stuGender=${item.STU_GENDER}&stuDept=${item.STU_DEPT}`
                     $.ajax({
@@ -164,11 +194,19 @@
                             self.fnGetList();
                         }
                     });
+                },
+                fnAllCheck() {
+                    var self = this;
+                    self.isAllCheck = !self.isAllCheck;
+                    if (self.isAllCheck) {
+                        self.selectList = self.defaultList;
+                    } else {
+                        self.selectList = [];
+                    }
                 }
 
             },
             mounted() {
-                // 처음 화면이 실행될때 호출할 부분
                 this.fnGetList();
             }
         });
