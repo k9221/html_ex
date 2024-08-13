@@ -1,0 +1,120 @@
+/* styles.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif; /* 기본 폰트 설정 */
+}
+
+.header {
+    position: relative; /* 자식 요소를 절대 위치로 배치할 기준 설정 */
+    width: 100%; /* 전체 가로 크기 */
+    height: 100vh; /* 화면 전체 높이 */
+    overflow: hidden; /* 넘침 방지 */
+}
+
+.image-container {
+    position: relative; /* 자식 요소를 절대 위치로 배치할 기준 설정 */
+    width: 100%; /* 전체 가로 크기 */
+    height: 100%; /* 전체 높이 */
+}
+
+.background-image {
+    width: 100%; /* 전체 가로 크기 맞춤 */
+    height: 100%; /* 전체 세로 크기 맞춤 */
+    object-fit: cover; /* 이미지 비율 유지하며 컨테이너를 채우기 */
+    
+}
+
+.overlay-image {
+    position: absolute; /* 절대 위치 설정 */
+    top:9.3%; /* 배경 이미지의 상단에서 50% 위치 */
+    left: 7.3%; /* 배경 이미지의 좌측에서 50% 위치 */
+    transform: translate(-50%, -50%); /* 겹치는 이미지를 중앙에 배치 */
+    width: 250px; /* 겹치는 이미지의 크기 설정 */
+    height: auto; /* 비율에 맞춰 높이 자동 조정 */
+    object-fit: contain; /* 이미지 비율 유지 */
+
+}
+
+.text-overlay {
+    position: absolute; /* 절대 위치 설정 */
+    top: 50%; /* 배경 이미지의 상단에서 50% 위치 */
+    left: 50%; /* 배경 이미지의 좌측에서 50% 위치 */
+    transform: translate(-50%, -50%); /* 텍스트를 중앙에 배치 */
+    color: white; /* 텍스트 색상 */
+    background-color: transparent; /* 반투명 배경 */
+    padding: 10px; /* 텍스트 주위에 여백 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    font-size: 1.5em; /* 텍스트 크기 */
+    font-weight: bold; /* 텍스트 두껍게 */
+    z-index: 2;
+    
+}
+
+ul {
+    position: absolute; /* 절대 위치 설정 */
+    top: 12%; /* 배경 이미지의 상단에서 10% 위치 */
+    right: 5%; /* 배경 이미지의 우측에서 5% 위치 */
+    list-style-type: none; /* 기본 리스트 스타일 제거 */
+    padding: 0; /* 패딩 제거 */
+    margin: 0; /* 마진 제거 */
+    display: flex; /* 플렉스 박스 사용 */
+    gap: 20px; /* 리스트 항목 간 간격 */
+}
+
+li a{
+    color: white; /* 텍스트 색상 */
+    padding-left: 5px;
+    font-size: 1.3em; /* 폰트 크기 */
+    font-weight: bold;
+    cursor: pointer; /* 커서 포인터로 설정 */
+    text-decoration: none;
+    letter-spacing: 2px; /* 글자 간격을 2픽셀로 설정 (필요에 따라 조정) */
+    padding-left: 30px; /* 왼쪽 여백을 추가하여 리스트 항목을 왼쪽으로 이동 (필요에 따라 조정) */
+    transition: font-size 0.3s ease;
+    display: block;
+}
+
+li:hover {
+    text-decoration: none; /* 마우스 오버 시 밑줄 추가 */
+    font-size: 1.2em;
+
+
+}
+.p1{
+    font-size: 2.4em;
+}
+h6{
+    padding-top:0;
+}
+.overlay-background{
+    position: absolute; /* 절대 위치 설정 */
+    top: 15%; /* 배경 이미지의 상단에서 9% 위치 */
+    left: 0; /* 화면의 왼쪽 가장자리에서 시작 */
+    width: 100vw; /* 창의 전체 가로 크기 맞춤 */
+    height: auto; /* 비율에 맞춰 높이 자동 조정 */
+    background-color: rgba(255, 255, 255, 0.6); /* 반투명 배경 (흰색, 50% 불투명도) */
+    z-index: 1; /* 다른 요소 위에 표시되도록 설정 */
+    padding-right: 50vw; /* 오른쪽으로 넓히기 위해 추가적인 여백 설정 */
+    color: rgba(255, 255, 255, 0);
+}
+.overlay-background2{
+    position: absolute; /* 절대 위치 설정 */
+    top: 0%; /* 상단에서 10% 위치 */
+    left: 11%; /* 화면의 중앙에서 시작 */
+    transform: translateX(-70%); /* 가로 중앙 정렬 */
+    width: 1.1vw; /* 가로 크기를 화면의 60%로 설정 */
+    height: 100vw; /* 세로 크기를 화면의 80%로 설정 */
+    background-color: rgba(255, 255, 255, 0.6); /* 반투명 배경 (흰색, 60% 불투명도) */
+    z-index: 1; /* 다른 요소 위에 표시되도록 설정 */
+    color: rgba(255, 255, 255, 0)
+
+}
+
+
+
+
+
+
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
